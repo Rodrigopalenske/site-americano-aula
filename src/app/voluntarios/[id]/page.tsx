@@ -2,13 +2,13 @@
 import { useState } from "react"
 
 export default function Dinamico(
-    { params } : { params: { id: string } }
+    { params }: { params: { id: string } }
 ) {
 
     const [contador, setContador] = useState(0)
-    console.log("use state aqui")
+    console.log("Use State aqui")
 
-    return(
-        <h1>Pagina Dinamica {params.id }</h1>  
+    return (
+        <h1>Pagina Dinamica {params.id}</h1>
     )
 }
