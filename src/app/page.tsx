@@ -1,7 +1,17 @@
 import { Card } from "@/components/Card";
 import { Menu } from "@/components/Menu";
+import { IProduto } from "@/interfaces";
+import axios from "axios";
 
-export default function Home() {
+interface IReqProduto {
+  data: Array<IProduto>
+}
+
+export default async function Home() {
+
+
+  const { data }: IReqProduto = await axios.get(process.env.NEXT_PUBLIC_API_URL + '/produtos')
+  
   return (
     <>
       <Menu />
@@ -19,7 +29,19 @@ export default function Home() {
             flexWrap: 'wrap'
           }}
         >
-          <Card />
+          {
+            data.map((produto) => (
+              <Card 
+                key={produto.id}
+                id={produto.id}
+                id_categoria={produto.id_categoria}
+                nome={produto.nome}
+                valor={produto.valor}
+                promo={produto.promo}
+                imagemg={produto.imagemg}
+              />
+            ))
+          }
         </div>
       </div>
     </>

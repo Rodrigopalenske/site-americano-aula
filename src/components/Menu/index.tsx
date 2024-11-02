@@ -14,7 +14,7 @@ export const Menu = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:3001/categorias')
+        axios.get(process.env.NEXT_PUBLIC_API_URL + '/categorias')
             .then((res) => {
                 // Quando é array é bom tipar e definir o estado como um Array vazio
                 setCategorias(res.data)
